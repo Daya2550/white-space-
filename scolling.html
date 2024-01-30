@@ -1,0 +1,29 @@
+
+ <!-- scrolling button-->
+ <button style ="position: fixed;top: 0px; right: 5px; z-index: 9999; width:10%;background: #00ff03; border-radius: 7px;" class="scroll-button" onclick="toggleScroll();">📌</button>
+<!-- scrolling option-->
+
+<style>
+    /* CSS for the button */
+.scroll-button{
+      position: fixed;
+      top: 0px;
+      right: 1px;
+      z-index: 9999;
+      width:100%;
+      }
+    
+  </style>
+  <script>
+    var scrollEnabled = true;
+
+    function toggleScroll() {
+      scrollEnabled = !scrollEnabled;
+      if (scrollEnabled) {
+        document.body.style.overflow = "auto";
+      } else {
+        document.body.style.overflow = "hidden";
+      }
+    }
+  </script>
+  <!-- scrolling close-->

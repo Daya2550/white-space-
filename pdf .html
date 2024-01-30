@@ -1,0 +1,67 @@
+
+<td onclick="openPDF('https://drive.google.com/file/d/1CY4on-Rnh4fBSOTP1LDIDMPAfQM-Kjyw/view?usp=drivesdk')">🎯Open🎯</td> </tr>
+<td onclick="openPDF('https://drive.google.com/file/d/1CY4on-Rnh4fBSOTP1LDIDMPAfQM-Kjyw/view?usp=drivesdk')">🎯Open🎯</td>
+
+<script>
+    function openPDF(url) {
+      var fileId = extractFileId(url);
+      var pdfViewer = document.getElementById('pdf-iframe');
+      var pdfContainer = document.getElementById('pdf-container');
+      var pdfURL = 'https://drive.google.com/file/d/' + fileId + '/preview';
+      
+      pdfViewer.src = pdfURL;
+      pdfContainer.style.display = 'block';
+    }
+
+    function closePDF() {
+      var pdfContainer = document.getElementById('pdf-container');
+      pdfContainer.style.display = 'none';
+    }
+
+    function extractFileId(url) {
+      var match = url.match(/\/file\/d\/(.+?)\//);
+      return match ? match[1] : null;
+    }
+  </script>
+  <style>
+    /* Styling for PDF viewer */
+    #pdf-container {
+      width: 100%;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: rgba(0, 0, 0, 0.8);
+      z-index: 9999;
+      display: none;
+    }
+
+    #pdf-viewer {
+      width: 95%;
+      height: 90%;
+      margin: 10% auto;
+      background-color: #fff;
+    }
+
+    #close-btn {
+      position: absolute;
+      top: 5%;
+      right: 5%;
+      width:11% ;
+      height: 6%;
+    }
+
+    /* Styling for buttons */
+    .pdf-btn {
+      margin: 10px;
+    }
+  </style>
+  
+  <div id="pdf-container">
+    <div id="pdf-viewer">
+      <button id="close-btn" onclick="closePDF()">Close</button>
+      <iframe id="pdf-iframe" src="" width="100%" height="100%"></iframe>
+    </div>
+  </div>
+  
+  

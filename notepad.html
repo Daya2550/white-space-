@@ -1,0 +1,125 @@
+<center>
+    <h1 style="color: #333;">Notepad</h1>
+    <div>
+        <button onclick="saveNote()">Save</button>
+        <button onclick="deleteNote()">Delete</button>
+        <button onclick="downloadNote()">Download</button>
+        <button onclick="setBold()">Bold</button>
+        <select onchange="changeFontSize(this.value)">
+            <option value="12">Font Size</option>
+            <option value="16">16px</option>
+            <option value="20">20px</option>
+            <option value="24">24px</option>
+        </select>
+        <input type="color" id="colorPicker" onchange="changeTextColor(this.value)">
+    </div>
+    <div>
+        <div id="pageIndicator">Page 1</div>
+        <button onclick="previousPage()">Previous</button>
+        <button onclick="nextPage()">Next</button>
+      <br>  <br><textarea id="notepad" class="page-transition" rows="10" cols="50"></textarea>
+    </div></center>
+    <style >
+      /*Note pad */
+  button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            margin: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        select, input[type="color"] {
+            padding: 5px;
+        }
+
+        textarea {
+            width: 96%;
+            height: 400px;
+            resize: none;
+            border-radius: 7px;
+        }
+
+        #pageIndicator {
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .page-transition {
+            transition: opacity 0.3s;
+        }  
+      
+    </style>
+    <script>
+        // Not pad 
+        let currentPage = 1;
+        const notepad = document.getElementById("notepad");
+        notepad.value = getNoteForPage(currentPage);
+
+        function saveNote() {
+            const note = notepad.value;
+            localStorage.setItem(`notePage${currentPage}`, note);
+        }
+
+        function deleteNote() {
+            notepad.value = "";
+            localStorage.removeItem(`notePage${currentPage}`);
+        }
+
+        function downloadNote() {
+            const note = notepad.value;
+            const blob = new Blob([note], { type: "text/plain" });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = `notePage${currentPage}.txt`;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        function setBold() {
+            notepad.style.fontWeight = "bold";
+        }
+
+        function changeFontSize(fontSize) {
+            notepad.style.fontSize = fontSize + "px";
+        }
+
+        function changeTextColor(color) {
+            notepad.style.color = color;
+        }
+
+        function previousPage() {
+            if (currentPage > 1) {
+                saveNote();
+                currentPage--;
+                updatePageIndicator();
+                notepad.classList.add("page-transition");
+                notepad.value = getNoteForPage(currentPage);
+                setTimeout(() => notepad.classList.remove("page-transition"), 10);
+            }
+        }
+
+        function nextPage() {
+            saveNote();
+            currentPage++;
+            updatePageIndicator();
+            notepad.classList.add("page-transition");
+            notepad.value = getNoteForPage(currentPage);
+            setTimeout(() => notepad.classList.remove("page-transition"), 10);
+        }
+
+        function updatePageIndicator() {
+            document.getElementById("pageIndicator").textContent = `Page ${currentPage}`;
+        }
+
+        function getNoteForPage(page) {
+            return localStorage.getItem(`notePage${page}`) || "";
+        }
+    </script>

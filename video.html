@@ -1,0 +1,155 @@
+<div class="carousel">
+    <div class="video-wrapper">
+      <div class="video-slide">
+        <!-- Video 1 -->
+        <video controls>
+          <source src="https://drive.google.com/uc?id=10-FWp6YD7whEza8re0NSBxQWRbIDqUfd" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="video-slide">
+        <!-- Video 2 -->
+        <video controls>
+          <source src="https://drive.google.com/uc?id=10NW5LWpjVvsf87gMsq2cdP8JjHBI1hy9" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="video-slide">
+        <!-- Video 3 -->
+        <video controls>
+          <source src="https://drive.google.com/uc?id=10Jzj8Co58t-cJpv9c0uers7vK7Oj2Hwa" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="video-slide">
+        <!-- Video 4 -->
+        <video controls>
+          <source src="https://drive.google.com/uc?id=10KpKCKiV3klWtQIUAMv1iwoSmve_DRj1" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <!-- Add more video slides as needed -->
+
+    </div>
+    <div class="navigation">
+      <div class="arrow arrow-left">&#8249;</div>
+      <div class="points">
+        <span class="point"></span>
+        <span class="point"></span>
+        <span class="point"></span>
+        <span class="point"></span>
+        <!-- Add more points as needed based on the number of video slides -->
+      </div>
+      <div class="arrow arrow-right">&#8250;</div>
+    </div>
+  </div>
+  
+<!-- videos -->
+<style >
+    body {
+  margin: 0;
+  padding: 0;
+}
+
+.carousel {
+  
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.video-wrapper {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.video-slide {
+  min-width: 100%;
+}
+
+video {
+  width: 95%;
+  height: 400px;
+  
+}
+
+.navigation {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  color:blue;
+  
+}
+
+.arrow {
+  font-size: 54px;
+  cursor: pointer;
+  padding: 5px;
+  
+}
+
+.points {
+  display: flex;
+  align-items: center;
+  margin: 0 10px;
+}
+
+.point {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #50ff00;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.point.active {
+  background-color: #333;
+}
+
+</style>
+<script>
+    const videoWrapper = document.querySelector(".video-wrapper");
+const videoSlides = document.querySelectorAll(".video-slide");
+const points = document.querySelectorAll(".point");
+const arrowLeft = document.querySelector(".arrow-left");
+const arrowRight = document.querySelector(".arrow-right");
+
+let currentIndex = 0;
+
+// Function to slide to the given index
+function slideTo(index) {
+  videoWrapper.style.transform = `translateX(-${index * 100}%)`;
+  points.forEach((point, i) => {
+    point.classList.toggle("active", i === index);
+  });
+}
+
+// Function to slide left
+function slideLeft() {
+  currentIndex = (currentIndex - 1 + videoSlides.length) % videoSlides.length;
+  slideTo(currentIndex);
+}
+
+// Function to slide right
+function slideRight() {
+  currentIndex = (currentIndex + 1) % videoSlides.length;
+  slideTo(currentIndex);
+}
+
+// Navigate using arrow buttons
+arrowLeft.addEventListener("click", slideLeft);
+arrowRight.addEventListener("click", slideRight);
+
+// Navigate using points
+points.forEach((point, index) => {
+  point.addEventListener("click", () => slideTo(index));
+});
+
+// Auto slide every 5 seconds
+setInterval(slideRight, 25000);
+
+</script>

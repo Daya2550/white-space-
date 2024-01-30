@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login Page</title>
+  <style>
+    /* Styling for the content */
+    .content {
+      border: 1px solid #000;
+      padding: 20px;
+      margin: 20px;
+    }
+  </style>
+</head>
+<body>
+<h2>daya</h2>
+<div id="loginForm">
+  <h2>Login</h2>
+  <label for="username">Username:</label><br>
+  <input type="text" id="username" name="username"><br>
+  <label for="password">Password:</label><br>
+  <input type="password" id="password" name="password"><br><br>
+  <button onclick="login()">Login</button>
+</div>
+
+<!-- Admin content elements -->
+<div class="content adminContent" style="display: none;">
+  <h2>Admin Content</h2>
+  <p>This content is visible to logged-in users only.</p>
+</div>
+
+<div class="content adminContent" style="display: none;">
+  <h2>Admin Content 2</h2>
+  <p>This content is visible to logged-in users only.</p>
+</div>
+<div class="content adminContent" style="display: none;">
+  <h2>Admin Content 25</h2>
+  <p>This content is visible to logged-in users only.</p>
+</div>
+<div class="content adminContent" style="display: none;">
+  <h2>Admin Content 2550</h2>
+  <p>This content is visible to logged-in users only.</p>
+</div>
+<div class="content adminContent" style="display: none;">
+  <h2>Admin Content 255075</h2>
+  <p>This content is visible to logged-in users only.</p>
+</div>
+<!-- Local content -->
+<div id="localContent" class="content" style="display: none;">
+  <h2>Local Content</h2>
+  <p>This content is visible to everyone.</p>
+</div>
+
+<script>
+  // Check if user was previously logged in
+  var isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+
+  if (isLoggedIn) {
+    var adminContentElements = document.getElementsByClassName('adminContent');
+    for (var i = 0; i < adminContentElements.length; i++) {
+      adminContentElements[i].style.display = 'block';
+    }
+    document.getElementById("localContent").style.display = 'block';
+    document.getElementById("loginForm").style.display = 'none';
+  }
+
+  // Define an array to store usernames and passwords
+  var userCredentials = [
+    { username: "dj", password: "2550" },
+    // Add more username-password pairs as needed
+  ];
+
+  function login() {
+    var username = document.getElementById("username").value;
+    var password = document.getElementById("password").value;
+
+    // Check if the provided username and password match any entry in the array
+    var isValidCredentials = userCredentials.some(function(credential) {
+      return credential.username === username && credential.password === password;
+    });
+
+    if (isValidCredentials) {
+      // Set login status in local storage
+      localStorage.setItem('isLoggedIn', 'true');
+
+      var adminContentElements = document.getElementsByClassName('adminContent');
+      for (var i = 0; i < adminContentElements.length; i++) {
+        adminContentElements[i].style.display = 'block';
+      }
+      document.getElementById("localContent").style.display = 'block';
+      document.getElementById("loginForm").style.display = 'none';
+    } else {
+      alert("Invalid username or password. Please try again.");
+    }
+  }
+</script>
+
+</body>
+</html>

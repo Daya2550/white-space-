@@ -1,0 +1,142 @@
+  
+ <div class="slideshow-container">
+    <!-- Slides -->
+    <div class="slide">
+      <img class="imgg" src="https://drive.google.com/uc?id=1-td2xchU3AbkIWAQ5YrHt06rg3dMeT0I" alt="Image 1">
+    </div>
+  
+    <div class="slide">
+      <img class="imgg" src="https://drive.google.com/uc?id=1-xz7iiBcdfj6o3g9fbhcUsOb_Z2KK3Hd" alt="Image 2">
+    </div>
+  
+    <div class="slide">
+      <img class="imgg" src="https://drive.google.com/uc?id=1-xIxgk-ewjcFVTe3mYCnvajod-obagoq" alt="Image 3">
+    </div>
+  <div class="slide">
+      <img class="imgg" src="https://drive.google.com/uc?id=1-pgfJyGQeVE8iwaeRNOnmh9SHnqYMZxg" alt="Image 4">
+    </div>
+  <div class="slide">
+      <img class="imgg" src="https://drive.google.com/uc?id=1-p7CfyhgQIuIQRXZApmSeHpXUemyUZyC" alt="Image 5">
+    </div>
+    <div class="slide">
+      <img class="imgg" src="https://drive.google.com/uc?id=1-oNgr7lReC3V5VtxcMmnrRRQ1sjKrV3G" alt="Image 6">
+    </div>
+  
+    <!-- Navigation arrows -->
+   
+  </div>
+  
+  <!-- Navigation points -->
+  <div style="text-align: center;">
+    <span class="dot" onclick="currentSlide(1)"></span>
+    <span class="dot" onclick="currentSlide(2)"></span>
+    <span class="dot" onclick="currentSlide(3)"></span>
+    <span class="dot" onclick="currentSlide(4)"></span>
+    <span class="dot" onclick="currentSlide(5)"></span>
+    <span class="dot" onclick="currentSlide(6)"></span>
+    <br>
+     <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
+    <a class="next" onclick="changeSlide(1)">&#10095;</a>
+  </div>
+   <!-- images -->
+<script>
+    let slideIndex = 1;
+    showSlide(slideIndex);
+  
+    function changeSlide(n) {
+      showSlide(slideIndex += n);
+    }
+  
+    function currentSlide(n) {
+      showSlide(slideIndex = n);
+    }
+  
+    function showSlide(n) {
+      const slides = document.getElementsByClassName("slide");
+      const dots = document.getElementsByClassName("dot");
+  
+      if (n > slides.length) {
+        slideIndex = 1;
+      }
+  
+      if (n < 1) {
+        slideIndex = slides.length;
+      }
+  
+      for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+  
+      for (let i = 0; i < dots.length; i++) {
+        dots[i].classList.remove("active");
+      }
+  
+      slides[slideIndex - 1].style.display = "block";
+      dots[slideIndex - 1].classList.add("active");
+  
+      setTimeout(() => {
+        changeSlide(1);
+      }, 10000); // Change slide every 5 seconds
+    }
+  </script>
+  <style>
+      /* Style for slideshow container */
+      .slideshow-container {
+        max-width: 500px;
+        position: relative;
+        margin: auto;
+        z-index:-1;
+      }
+  
+      /* Style for slides */
+      .slide {
+        display: none;
+      }
+  
+      /* Style for navigation points */
+      .dot {
+        height: 10px;
+        width: 10px;
+        margin: 0 4px;
+        background-color: #50ff00;
+        border-radius: 50%;
+        display: inline-block;
+        transition: background-color 0.6s ease;
+      }
+  
+      /* Style for active navigation point */
+      .active {
+        background-color: #717171;
+      }
+  
+      /* Style for navigation arrows */
+      .prev, .next {
+        cursor: pointer;
+        
+      
+        width: 400pxpx;
+        margin-top: -22px;
+        padding: 16px;
+        color: #ff352b;
+        font-weight: bold;
+        font-size: 18px;
+        transition: 0.6s ease;
+        user-select: none;
+      }
+  
+      .next {
+        right: 0;
+      }
+  
+      /* Hide navigation arrows on small screens */
+      @media screen and (max-width: 600px) {
+        .prev, .next {
+          display: none;
+        }
+      }
+      .imgg{
+          width: 91%
+          
+          
+      }
+    </style>  

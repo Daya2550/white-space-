@@ -1,0 +1,22 @@
+<center>
+    <div>
+    <label for="searchInput"></label>
+<input type="text" id="searchInput">
+    <button onclick="searchAndScroll()">🔍</button> </div></center>
+    <!-- search -->
+<script>
+    function searchAndScroll() {
+    const searchText = document.getElementById('searchInput').value.toLowerCase();
+    const headings = document.querySelectorAll('td, h2');
+    
+    let found = false;
+    for (const heading of headings) {
+    const headingText = heading.textContent.toLowerCase();
+    if (headingText.includes(searchText)) {
+    heading.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    found = true;
+    break; } }
+    if (!found) {
+    alert('Text not found in h1 or h2 tags.');
+}
+}</script>         

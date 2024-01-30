@@ -1,44 +1,55 @@
+<oooo class="video-button"  onclick="openVideo('')"><h1>daya</h1></oooo></td>
 
-    <style>
-        #video-frame {
-           border-radius: 10px;
-            width: 560px;
-            height: 315px;
-            display: none;
-        }
-        #closeVideo{
-            width: 100%;
-            border-radius: 5px;
-            color: red;
-            background-color:beige;
-            font-weight: bold;
-        }
-    </style>
-<body>
-  
-    <button onclick="playVideo('3mwa71eMxz0?si=VSm1HyJz_oLudEry')">Play Video </button>
-    <button onclick="playVideo('video2')">Play Video 2</button>
-    <button onclick="playVideo('video3')">Play Video 3</button>
+<script>
+    function openVideo(videoId) {
+      const videoContainer = document.getElementById('video-container');
+      const videoIframe = document.getElementById('video-iframe');
+      videoIframe.src = `https://www.youtube.com/embed/${videoId}`;
+      videoContainer.style.display = 'block';
+    }
     
-    <div id="video-frame">
-        <iframe id="video-player" width="560" height="315" src="" frameborder="0" allowfullscreen></iframe>
-        <button id="closeVideo" onclick="closeVideo()">Close</button>
-    </div>
-    
-    <script>
-        function playVideo(videoId) {
-            var videoFrame = document.getElementById('video-frame');
-            var videoPlayer = document.getElementById('video-player');
-            videoPlayer.src = 'https://www.youtube.com/embed/' + videoId;
-            videoFrame.style.display = 'block';
-        }
-        
-        function closeVideo() {
-            var videoFrame = document.getElementById('video-frame');
-            var videoPlayer = document.getElementById('video-player');
-            videoPlayer.src = '';
-            videoFrame.style.display = 'none';
-        }
+    function closeVideo() {
+      const videoContainer = document.getElementById('video-container');
+      const videoIframe = document.getElementById('video-iframe');
+      videoIframe.src = '';
+      videoContainer.style.display = 'none';
+    }
     </script>
-</body>
-</html>
+    
+    <style>
+      .video-container {
+        display: none;
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 90%;
+                height: 90%;
+                max-width: 90%;
+                max-height: 70%;
+                border: 2px solid #333;
+                background-color: #fff;
+                z-index: 1000;
+                overflow: hidden;
+                border-radius: 20px;
+                
+            }
+      .close-button {
+        position: absolute;
+        top: 30px;
+        right: 30px;
+        cursor: pointer;
+        width: 100%;
+        border:solid;
+        background: #3b3b3bd4;
+      }
+      
+    </style>
+    
+    
+      <div id="video-container" class="video-container">
+      <iframe id="video-iframe" width="100%" height="95%" src="" frameborder="0" allowfullscreen></iframe>
+          <center><div class="close-button" onclick="closeVideo()">❌</div></center>
+    </div>
+        
+      

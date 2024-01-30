@@ -1,0 +1,34 @@
+<script>
+    // Function to adjust elements on window resize
+    function adjustElements() {
+    // Adjust images
+    var images = document.getElementsByClassName('phot');
+    for (var i = 0; i < images.length; i++) {
+    images[i].style.width = '100%';
+     }  // Adjust videos
+    var videos = document.getElementsByTagName('video');
+    for (var j = 0; j < videos.length; j++) {
+    videos[j].style.width = '100%';
+       }
+     // Adjust buttons
+    var buttons = document.getElementsByTagName('button');
+    for (var k = 0; k < buttons.length; k++) {
+    buttons[k].style.fontSize = '15px';
+    buttons[k].style.padding = '5px';}
+    // Adjust inputs
+    var inputs = document.getElementsByTagName('input');
+    for (var l = 0; l < inputs.length; l++) {
+    inputs[l].style.fontSize = '16px';
+    inputs[l].style.padding = '10px';}
+     // Adjust text
+    var texts = document.getElementsByTagName('p');
+    for (var m = 0; m < texts.length; m++) {
+    texts[m].style.fontSize = '16px';
+     }}
+    // Adjust elements on page load
+    window.onload = function() {
+    adjustElements(); };
+    // Adjust elements on window resize
+    window.onresize = function() {
+    adjustElements();  };
+    </script>

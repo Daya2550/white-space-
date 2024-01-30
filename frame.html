@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    /* Updated style for the frames with changed class names */
+    .custom-frame {
+      border: 1px solid #000;
+      width: 100%;
+      overflow: auto;
+    }
+    .custom-size{
+        width: 100%;
+        height: 2px;
+    }
+  </style>
+</head>
+<body>
+
+<button onclick="openCustomFrame('customFrame1')">Open Custom Frame 1</button>
+<br>
+
+<button onclick="openCustomFrame('customFrame2')">Open Custom Frame 2</button>
+
+<div id="customFrameContainer">
+  <div id="customFrame1" class="custom-frame" style="height: 200px; display: none;">
+      <input type="range" min="100" max="500" value="200" oninput="resizeCustomFrame('customFrame1', this.value)" class="custom-size">
+      <button onclick="closeCustomFrame('customFrame1')">Close Custom Frame 1</button>
+
+      <br>
+  
+      <p>Custom Frame 1 Content</p>
+  </div>
+</div>
+
+<div id="customFrame2" class="custom-frame" style="height: 200px; display: none;">
+  <input type="range" min="100" max="500" value="200" oninput="resizeCustomFrame('customFrame2', this.value)" class="custom-size">
+  <br><br>
+  <button onclick="closeCustomFrame('customFrame2')">Close Custom Frame 2</button>
+  <p>Custom Frame 2 Content</p>
+</div>
+
+<script>
+  function openCustomFrame(frameId) {
+    document.getElementById(frameId).style.display = 'block';
+  }
+
+  function closeCustomFrame(frameId) {
+    document.getElementById(frameId).style.display = 'none';
+  }
+
+  function resizeCustomFrame(frameId, height) {
+    document.getElementById(frameId).style.height = height + 'px';
+  }
+</script>
+
+</body>
+</html>

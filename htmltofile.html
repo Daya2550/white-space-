@@ -1,0 +1,60 @@
+<center >
+
+    <code id="codeBlock" onclick="copyCode()" class="copycode">
+        &lt;!DOCTYPE html&gt;
+        &lt;h1&gt; Daya &lt h1&gt;
+        
+    </code>     
+        <h1>Enter HTML:</h1>
+        <textarea class="text" id="htmlCode" rows="10" cols="50"></textarea><br>
+        <h2>Enter File Name:</h2>
+        <input type="text" id="fileName"><br>
+        <button id="downloadButton">Download HTML File</button></center>
+    <style >
+/* html to file */ 
+.text {
+            border-radius: 10px;width: 90%;height: 400px;
+        }
+        .copycode {
+            white-space: nowrap;
+            display: block;
+            background-color: #f4f4f4;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            background: #828282;
+            overflow-x: auto;
+            border-radius: 5px;
+            height: auto;
+            font-family: 'Courier New', monospace;
+        }
+    </style>
+    <script >
+// Html to file 
+document.getElementById("downloadButton").addEventListener("click", function () {
+            const htmlCode = document.getElementById("htmlCode").value;
+            const fileName = document.getElementById("fileName").value + ".html";
+            const blob = new Blob([htmlCode], { type: "text/html" });
+            const url = URL.createObjectURL(blob);
+
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = fileName;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        });
+// code block
+function copyCode() {
+        const codeBlock = document.getElementById('codeBlock');
+        const textArea = document.createElement('textarea');
+        textArea.value = codeBlock.textContent;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+        alert('Code copied to clipboard!');
+    }
+    
+    </script>

@@ -1,0 +1,101 @@
+<!-- add  -->
+<input type="password" id="passwordInput">
+    <button onclick="checkPassword()">Submit</button>
+  <!-- Pop-up container -->
+  <div class="popup-container" id="popup">
+    <div id="popup" class="popup">
+<span class="popup-close"  onclick="closePopup()">&times;</span>
+<div class="ad-container"> 
+
+<img src="https://drive.google.com/uc?id=1FJIUo_bQb35Q3iDsgxVxncVYWL0ZdNSt" alt="Advertisement" class="ad-image">
+ <div class="ad-content">
+ <h3 class="ad-title">Special offer!</h3><p class="ad-description">Limited time Download the App & Earn real money💸Refer code-  8JJX1LG7 </p>
+ <a href="https://striker.onelink.me/OjwZ/29kr2ij1" class="ad-link"><center><button style="display: inline-block;padding: 10px 20px;background-color: #40fff552;
+ color: #000000;text-decoration: none;border-radius: 5px;transition: background-color 0.3s ease;">Download</button>  </center></div></a>        
+</div></a></div>
+</div>
+
+    
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    // Function to show the pop-up ad
+    function showPopup() {
+      document.getElementById("popup").style.display = "block";
+    }
+
+    // Function to close the pop-up ad
+    function closePopup() {
+      document.getElementById("popup").style.display = "none";
+    }
+
+    // Function to check the entered password
+    function checkPassword() {
+      var password = "Whitespaceadd2550"; // Replace this with your desired password
+      var enteredPassword = document.getElementById("passwordInput").value;
+
+      if (enteredPassword === password) {
+        // Password is correct, close the pop-up and set a flag to prevent further pop-ups
+        closePopup();
+        localStorage.setItem("popupShown", "true");
+      }
+    }
+
+    // Check if the pop-up has already been shown before
+    var popupShown = localStorage.getItem("popupShown");
+
+    // If not shown before, show the pop-up
+    if (!popupShown) {
+      showPopup();
+
+      // Automatically close the pop-up after 10 seconds
+      setTimeout(closePopup, 10000);
+    }
+    
+  </script>
+</body>
+</html>
+<style>.ad-image {width: 150px;                                                                                                                                                                                                   height: 150px;                                                                                                                                                                                                       object-fit: cover;                                                                                                                                                                                                         border-radius: 5px;                                                                                                                                                                                                           margin-right: 20px;}
+    .ad-content { display: flex;                                                                                                                                                                                                              flex-direction: column;                                                                                                                                                                                                                justify-content: center;}
+   .popup { width: 200px;                                                                                                                                                    background-color: #fff;                                                                                                                                                          padding: 20px;                                                                                                                                                              border-radius: 5px;                                                                                                                                                                  text-align: center;}
+  .ad-container {  max-width: 400px;                                                                                                                                                                                   margin: 0 auto;                                                                                                                                                                                     background-color: #f5f5f5;                                                                                                                                                                                       padding: 20px;                                                                                                                                                                                         border-radius: 10px;                                                                                                                                                                                          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);}
+              /* Pop-up Styles */
+.popup {
+position: fixed;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+background-color: #fff;
+padding: 20px;
+border-radius: 5px;
+box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+z-index: 9999; }
+.popup img {
+max-width: 100%;}
+.popup-close {
+position: absolute;
+top: 10px;
+right: 10px;
+font-size: 20px;
+color: #999;
+cursor: pointer; }.ad-link {display: flex;                                                                                                                                                                                            text-decoration: none;                                                                                                                                                                                                color: inherit;} .ad-content { display: flex;                                                                                                                                                                                                              flex-direction: column;                                                                                                                                                                                                                justify-content: center;}
+</style>
+<style>
+    /* Style for the pop-up container */
+    .popup-container {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 20px;
+      border: 1px solid #ccc;
+      background-color: #fff;
+      z-index: 9999;
+    }
+
+   
+  </style>
+
+

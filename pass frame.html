@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  .frame {
+    border: 2px solid black;
+    padding: 10px;
+    margin: 10px;
+    display: none;
+    max-height: 200px; /* Adjust the initial max height as needed */
+    overflow-y: auto;
+  }
+
+  .content {
+    max-height: 100%; /* Adjust the max height of content inside the frame */
+  }
+</style>
+</head>
+<body>
+
+<div id="login">
+  <h2>Login</h2>
+  <label for="username">Username:</label>
+  <input type="text" id="username" placeholder="Enter username"><br><br>
+  <label for="password">Password:</label>
+  <input type="password" id="password" placeholder="Enter password"><br><br>
+  <button onclick="login()">Login</button>
+</div>
+
+<div>
+  <label for="frameHeight">Adjust Frame Height:</label>
+  <input type="range" id="frameHeight" min="50" max="500" step="10" onchange="adjustFrameHeight(this.value)">
+</div>
+
+<button onclick="toggleFrame('frame1')">Open Frame 1</button>
+<button onclick="toggleFrame('frame2')">Open Frame 2</button>
+
+<div id="frame1" class="frame">
+  <button onclick="closeFrame('frame1')">Close Frame 1</button>
+  <div class="content">
+    <p>Content of Frame 1
+    .frame {
+    border: 2px solid black;
+    padding: 10px;
+    margin: 10px;
+    display: none;
+    max-height: 200px; /* Adjust the initial max height as needed */
+    overflow-y: auto;
+  }
+
+  .content {
+    max-height: 100%; /* Adjust the max height of content inside the frame */
+  }</p>
+  <p>Content of Frame 1
+    .frame {
+    border: 2px solid black;
+    padding: 10px;
+    margin: 10px;
+    display: none;
+    max-height: 200px; /* Adjust the initial max height as needed */
+    overflow-y: auto;
+  }
+
+  .content {
+    max-height: 100%; /* Adjust the max height of content inside the frame */
+  }</p>
+  <p>Content of Frame 1
+    .frame {
+    border: 2px solid black;
+    padding: 10px;
+    margin: 10px;
+    display: none;
+    max-height: 200px; /* Adjust the initial max height as needed */
+    overflow-y: auto;
+  }
+
+  .content {
+    max-height: 100%; /* Adjust the max height of content inside the frame */
+  }</p>
+  <p>Content of Frame 1
+    .frame {
+    border: 2px solid black;
+    padding: 10px;
+    margin: 10px;
+    display: none;
+    max-height: 200px; /* Adjust the initial max height as needed */
+    overflow-y: auto;
+  }
+
+  .content {
+    max-height: 100%; /* Adjust the max height of content inside the frame */
+  }</p>
+  <p>Content of Frame 1
+    .frame {
+    border: 2px solid black;
+    padding: 10px;
+    margin: 10px;
+    display: none;
+    max-height: 200px; /* Adjust the initial max height as needed */
+    overflow-y: auto;
+  }
+
+  .content {
+    max-height: 100%; /* Adjust the max height of content inside the frame */
+  }</p>
+  
+  </div>
+</div>
+
+<div id="frame2" class="frame">
+  <button onclick="closeFrame('frame2')">Close Frame 2</button>
+  <div class="content">
+    <p>Content of Frame 2</p>
+  </div>
+</div>
+
+<script>
+  const users = [
+    { username: 'dj', password: '2550' },
+    { username: 'user2', password: 'password2' }
+    // Add more users as needed
+  ];
+
+  let isLoggedIn = false;
+
+  const storedLoginStatus = localStorage.getItem('isLoggedIn');
+  if (storedLoginStatus === 'true') {
+    isLoggedIn = true;
+    document.getElementById('login').style.display = 'none';
+  }
+
+  function login() {
+    const enteredUsername = document.getElementById('username').value;
+    const enteredPassword = document.getElementById('password').value;
+
+    const user = users.find(user => user.username === enteredUsername && user.password === enteredPassword);
+
+    if (user) {
+      isLoggedIn = true;
+      document.getElementById('login').style.display = 'none';
+      localStorage.setItem('isLoggedIn', 'true');
+    } else {
+      alert('Invalid username or password.');
+    }
+  }
+
+  function toggleFrame(frameId) {
+    if (isLoggedIn) {
+      var frame = document.getElementById(frameId);
+      frame.style.display = (frame.style.display === 'none' || frame.style.display === '') ? 'block' : 'none';
+    } else {
+      alert('Please login first.');
+    }
+  }
+
+  function closeFrame(frameId) {
+    var frame = document.getElementById(frameId);
+    frame.style.display = 'none';
+  }
+
+  function adjustFrameHeight(value) {
+    const frames = document.querySelectorAll('.frame');
+    frames.forEach(frame => {
+      frame.style.maxHeight = `${value}px`;
+    });
+  }
+</script>
+
+</body>
+</html>

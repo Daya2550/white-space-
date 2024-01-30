@@ -1,0 +1,37 @@
+<style>
+    /* Style for the tooltip */
+    .tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    }
+    
+    /* Tooltip text */
+    .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 200px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -100px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    }
+    
+    /* Show the tooltip text on hover */
+            .tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+    }
+        </style>
+        <span class="tooltip">  8086 Microprocessor <span class="tooltiptext"> 
+            8086 Architecture,InternalOperation,MachineLanguage Instruction Execution Timing
+            AddressingModes,
+             
+            </span></span>

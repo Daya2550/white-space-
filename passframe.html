@@ -1,0 +1,65 @@
+
+<!-- password frame-->
+<button onclick="openFrame('frame5')">premium</button>
+<div class="frame" id="frame5"><button onclick="closeFrame('frame5')">Close</button>
+</div></div>
+<script>
+     
+    const framePasswords = {
+        frame1: 'Maths ₹2550₹',
+        frame2: 'Datasql2550',
+        frame3: 'Pythonprint',
+        frame4: 'Computer@graphics',
+        frame5: 'Matches&@',
+        frame6: 'Micro@2550@',
+        frame7: 'Whitespaceadd2550',
+    };
+
+    // Check if a frame is already authenticated
+    function isFrameAuthenticated(frameId) {
+        return localStorage.getItem(frameId) === 'authenticated';
+    }
+
+    // Open a frame and prompt for a password if needed
+    function openFrame(frameId) {
+        const frameElement = document.getElementById(frameId);
+
+        // Check if the frame is already authenticated
+        if (!isFrameAuthenticated(frameId)) {
+            const password = prompt('Enter password:');
+            if (password === framePasswords[frameId]) {
+                localStorage.setItem(frameId, 'authenticated');
+            } else {
+                alert('Incorrect password');
+                return;
+            }
+        }
+
+        frameElement.style.display = 'block';
+    }
+
+    // Close a frame
+    function closeFrame(frameId) {
+        const frameElement = document.getElementById(frameId);
+        frameElement.style.display = 'none';
+    }
+</script>
+</body>
+</html>
+<style>
+    .frame {
+        width: auto;
+        height: auto;
+        border: 1px solid black;
+        display: none;
+        background: #6affb66d;
+        border-radius: 10px;
+        padding: 5px;
+    }
+</style>
+
+
+
+
+
+
