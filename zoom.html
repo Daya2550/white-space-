@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image Zoom on Hover</title>
+<style>
+  .image-container {
+    position: relative;
+    display: inline-block;
+    margin: 10px;
+    overflow: hidden;
+  }
+
+  .image-container img {
+    display: block;
+    width: 300px; /* Adjust as needed */
+    transition: transform 0.3s ease;
+  }
+
+  .image-container:hover img {
+    transform: scale(5); /* Zoom effect */
+  }
+
+  .zoom-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    display: none;
+  }
+
+  .image-container:hover .zoom-overlay {
+    display: block;
+  }
+</style>
+</head>
+<body>
+
+<div class="image-container">
+  <img src="image1.jpg" alt="Image 1">
+  <div class="zoom-overlay"></div>
+</div>
+
+<div class="image-container">
+  <img src="https://i.postimg.cc/QMNmrLmM/wheat-color-texture-high-quality-free-photo.jpg" alt="Image 2">
+  <div class="zoom-overlay"></div>
+</div>
+
+<!-- Add more image containers as needed -->
+
+<script>
+  document.querySelectorAll('.image-container').forEach(function(container) {
+    container.addEventListener('mousemove', function(event) {
+      const img = container.querySelector('img');
+      const boundingRect = container.getBoundingClientRect();
+      const offsetX = event.clientX - boundingRect.left;
+      const offsetY = event.clientY - boundingRect.top;
+      const percentX = offsetX / boundingRect.width * 100;
+      const percentY = offsetY / boundingRect.height * 100;
+      img.style.transformOrigin = percentX + '% ' + percentY + '%';
+    });
+  });
+</script>
+
+</body>
+</html>
