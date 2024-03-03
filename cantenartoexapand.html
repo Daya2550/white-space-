@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Container with Show/Hide Button</title>
+<style>
+  .container {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    overflow-y: auto; /* Changed to auto for scrolling */
+    max-height: 100px; /* Adjust as needed */
+    transition: max-height 0.3s ease;
+  }
+</style>
+</head>
+<body>
+  
+<div class="container" id="container1">
+  <h2>Container 1</h2>
+  <p>This is the content of container 1. It can be expanded or collapsed.</p>
+  <p>This is the content of container 1. It can be expanded or collapsed.</p>
+  <p>This is the content of container 1. It can be expanded or collapsed.</p>
+  <p>This is the content of container 1. It can be expanded or collapsed.</p>
+  
+</div>
+<button onclick="toggleContent('container1')">Show/Hide Content</button>
+
+<div class="container" id="container2">
+  <h2>Container 2</h2>
+  <p>This is the content of container 2. It can be expanded or collapsed.</p>
+  <button onclick="toggleContent('container2')">Show/Hide Content</button>
+</div>
+
+<div class="container" id="container3">
+  <h2>Container 3</h2>
+  <p>This is the content of container 3. It can be expanded or collapsed.</p>
+  <button onclick="toggleContent('container3')">Show/Hide Content</button>
+</div>
+
+<script>
+function toggleContent(containerId) {
+  var container = document.getElementById(containerId);
+  var button = container.nextElementSibling; // Getting the button element next to the container
+  if (container.style.maxHeight) {
+    container.style.maxHeight = null;
+    button.textContent = 'Show Content';
+  } else {
+    container.style.maxHeight = container.scrollHeight + "px";
+    button.textContent = 'Hide Content';
+  } 
+}
+</script>
+
+</body>
+</html>
